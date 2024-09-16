@@ -25,6 +25,7 @@ st.header("Technologies Used 🌐")
 st.write("""
 SQL Galaxy was built using the following technologies:
 - **Streamlit**: For creating the interactive web-based interface.
+- **Heroku**: For deployment
 - **PostgreSQL**: As the backend database to store and query data.
 - **Python (psycopg2)**: For handling database connections and executing SQL queries.
 - **Pandas**: To display query results in a tabular format.
