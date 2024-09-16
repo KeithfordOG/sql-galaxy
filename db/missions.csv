@@ -1,0 +1,12 @@
+"mission_id","planet_id","mission_name","mission_date","crew_size"
+1,1,"Mars Rover Mission","2004-01-04",6
+2,1,"Mars Pathfinder","1997-07-04",5
+3,2,"Jupiter Probe","1973-12-03",8
+4,3,"Saturn Orbiter","2004-07-01",3
+5,4,"Neptune Explorer","1989-08-25",7
+6,5,"Pluto Flyby","2015-07-14",3
+7,6,"Venus Research","1982-03-05",4
+8,8,"Mariner 10","1974-03-29",0
+9,8,"MESSENGER","2004-08-03",0
+10,8,"BepiColombo","2018-10-20",0
+11,7,"Voyager 2","1986-01-24",0

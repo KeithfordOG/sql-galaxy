@@ -1,0 +1,13 @@
+streamlit==1.18.0
+psycopg2-binary==2.9.5
+pandas==2.2.2
+numpy==1.26.0
+SQLAlchemy==2.0.16
+requests==2.31.0
+validators==0.34.0
+Flask==3.0.3
+Flask-Cors==5.0.0
+altair==4.2.2
+matplotlib==3.8.0
+Pillow==10.0.1
+pydeck==0.9.1

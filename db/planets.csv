@@ -1,0 +1,10 @@
+"planet_id","planet_name","distance_from_earth","discoverer","discovery_year"
+1,"Mars",225,"Galileo",1610
+2,"Jupiter",778,"Galileo",1610
+3,"Saturn",1433,"Huygens",1655
+4,"Neptune",4495,"Le Verrier",1846
+5,"Pluto",5906,"Tombaugh",1930
+6,"Venus",108,"Babylonians",-500
+7,"Uranus",2871,"William Herschel",1781
+8,"Mercury",77,"Known since antiquity",""
+9,"Earth",0,"Known since antiquity",""

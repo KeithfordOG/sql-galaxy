@@ -1,0 +1,11 @@
+"moon_id","moon_name","planet_id","diameter_km","discovered_by","discovery_year"
+1,"Phobos",1,"22.20","Asaph Hall",1877
+2,"Deimos",1,"12.40","Asaph Hall",1877
+3,"Io",2,"3643.20","Galileo",1610
+4,"Europa",2,"3121.60","Galileo",1610
+5,"Ganymede",2,"5262.40","Galileo",1610
+6,"Callisto",2,"4820.60","Galileo",1610
+7,"Titan",3,"5150.00","Christiaan Huygens",1655
+8,"Enceladus",3,"504.00","William Herschel",1789
+9,"Triton",4,"2706.80","William Lassell",1846
+10,"Charon",5,"1212.00","James Christy",1978
