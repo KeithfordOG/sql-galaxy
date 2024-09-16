@@ -1,1 +1,1 @@
-web: streamlit run HOME.py --server.port=5432
+web: streamlit run HOME.py --server.port=$PORT
