@@ -1,7 +1,50 @@
 import streamlit as st
 import pandas as pd
 import sqlparse
-from db_utils import execute_sql_query  # Assuming db_utils.py contains the execute_sql_query function
+import psycopg2
+from urllib.parse import urlparse
+
+# PostgreSQL Database connection using Streamlit secrets
+def create_connection():
+    try:
+        # Retrieve the database URL from Streamlit secrets
+        url = st.secrets["postgresql"]["DB_URL"]
+        
+        # Parse the URL to extract connection parameters
+        parsed_url = urlparse(url)
+        
+        # Connect to the PostgreSQL database
+        conn = psycopg2.connect(
+            host=parsed_url.hostname,
+            database=parsed_url.path[1:],  # Remove leading '/'
+            user=parsed_url.username,
+            password=parsed_url.password,
+            port=parsed_url.port
+        )
+        return conn
+    except Exception as e:
+        st.error(f"Error connecting to the database: {e}")
+        return None
+
+# Function to execute SQL query and return result as a Pandas DataFrame
+def execute_sql_query(query):
+    conn = create_connection()
+    if conn:
+        try:
+            cur = conn.cursor()
+            cur.execute(query)
+            columns = [desc[0] for desc in cur.description]  # Get column names
+            result = cur.fetchall()  # Fetch all rows
+            cur.close()
+            conn.close()
+            return pd.DataFrame(result, columns=columns)  # Return result as a DataFrame
+        except Exception as e:
+            st.error(f"Error executing query: {e}")
+            return None
+    else:
+        return None
+
+
 
 #Title
 st.title('EASY')

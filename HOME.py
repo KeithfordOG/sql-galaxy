@@ -1,16 +1,24 @@
 import streamlit as st
 import psycopg2
 import pandas as pd
+from urllib.parse import urlparse
 
 # PostgreSQL Database connection using Streamlit secrets
 def create_connection():
     try:
+        # Retrieve the database URL from Streamlit secrets
+        url = st.secrets["postgresql"]["DB_URL"]
+        
+        # Parse the URL to extract connection parameters
+        parsed_url = urlparse(url)
+        
+        # Connect to the PostgreSQL database
         conn = psycopg2.connect(
-            host=st.secrets["postgresql"]["DB_HOST"],  # Get the host from Streamlit secrets
-            database=st.secrets["postgresql"]["DB_NAME"],  # Get the database name from Streamlit secrets
-            user=st.secrets["postgresql"]["DB_USER"],  # Get the user from Streamlit secrets
-            password=st.secrets["postgresql"]["DB_PASSWORD"],  # Get the password from Streamlit secrets
-            port=st.secrets["postgresql"].get("DB_PORT", "5432")  # Default port is 5432 if not set
+            host=parsed_url.hostname,
+            database=parsed_url.path[1:],  # Remove leading '/'
+            user=parsed_url.username,
+            password=parsed_url.password,
+            port=parsed_url.port
         )
         return conn
     except Exception as e:
