@@ -37,6 +37,8 @@ def execute_sql_query(query):
             result = cur.fetchall()  # Fetch all rows
             cur.close()
             conn.close()
+            if not result:
+                st.warning("The query executed but returned no results.")
             return pd.DataFrame(result, columns=columns)  # Return result as a DataFrame
         except Exception as e:
             st.error(f"Error executing query: {e}")
@@ -45,8 +47,7 @@ def execute_sql_query(query):
         return None
 
 
-
-#Title
+# Title
 st.title('EASY')
 
 # Image Header for Milky Way (Easy Mode)
@@ -135,8 +136,8 @@ for i, query in enumerate(milkyway_queries):
             st.write(f"Your Attempted Query: \n```sql\n{user_answer}\n```")
             try:
                 query_result = execute_sql_query(user_answer)  # Execute the user's SQL query
-                if query_result is not None:
-                    st.write(query_result)  # Show the SQL query result
+                if query_result is not None and not query_result.empty:
+                    st.dataframe(query_result)  # Show the SQL query result as a table
                 else:
                     st.error("No data returned from the query.")
             except Exception as e:
@@ -158,6 +159,8 @@ for i, query in enumerate(milkyway_queries):
 # Show progress
 st.subheader(f"Progress: {st.session_state.questions_completed} out of {len(milkyway_queries)} questions completed! 👩‍🚀")
 
+
+
 # Schema Title
 st.title('Schema')
 
@@ -166,27 +169,18 @@ st.subheader('🌍 Planets Table')
 st.write("This table contains detailed information about planets, including their distance from the sun, discoverers, and unique IDs.")
 planets_query = "SELECT * FROM planets;"  # Query the planets table from PostgreSQL
 planets_df = execute_sql_query(planets_query)
-if planets_df is not None:
-    st.write(planets_df)
-else:
-    st.error("No data found for the Planets table.")
+st.write(planets_df)
 
 # Missions Table (Fetched from PostgreSQL)
 st.subheader('🚀 Missions Table')
 st.write("This table contains the details of various space missions, including their destination planets and crew sizes.")
 missions_query = "SELECT * FROM missions;"  # Query the missions table from PostgreSQL
 missions_df = execute_sql_query(missions_query)
-if missions_df is not None:
-    st.write(missions_df)
-else:
-    st.error("No data found for the Missions table.")
+st.write(missions_df)
 
 # Moons Table (Fetched from PostgreSQL)
 st.subheader('🌕 Moons Table')
 st.write("This table tracks all the moons, their diameters, discoverers, and the planets they orbit.")
 moons_query = "SELECT * FROM moons;"  # Query the moons table from PostgreSQL
 moons_df = execute_sql_query(moons_query)
-if moons_df is not None:
-    st.write(moons_df)
-else:
-    st.error("No data found for the Moons table.")
+st.write(moons_df)
