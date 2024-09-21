@@ -186,6 +186,22 @@ for i, query in enumerate(advanced_queries):
         if st.session_state.answer_correct_advanced[i]:
             st.write(f"You've answered Question {i+1} correctly.")
 
+# Section to direct users to try solving problems
+st.subheader("Time to Test Your SQL Knowledge!")
+st.write("""
+    Now that you've reviewed the SQL tips and tricks, it's time to test your knowledge by solving real-world problems.
+    
+    Use the **side navigation** to select one of the difficulty levels:
+    
+    - **Milky Way** (Easy)
+    - **Hydra Cluster** (Intermediate)
+    - **Hercules Supercluster** (Advanced)
+    
+    Each difficulty tier contains multiple SQL challenges to help you practice your skills. Good luck, and may your queries always return the right results!
+""")
+
+
+
 # Show progress
 st.subheader(f"Progress: {st.session_state.questions_completed} out of {len(advanced_queries)} questions completed! 👩‍🚀 ")
 
