@@ -79,7 +79,7 @@ with tabs[0]:
     - **Rows**: Individual records within a table.
     - **Columns**: Specific attributes or fields that describe the data.
 
-    For example, a `PLANETS` table might look like this:
+    For example,  `PLANETS` table might look like this:
 
     | planet_id | planet_name | distance_from_earth | discoverer     |
     |-----------|-------------|---------------------|----------------|

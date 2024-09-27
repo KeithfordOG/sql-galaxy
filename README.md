@@ -1,0 +1,153 @@
+# 🚀 SQL Galaxy 🌌
+
+Welcome to **SQL Galaxy**, a fun and interactive SQL learning game designed to challenge your SQL skills while you explore the vast galaxy! This game is perfect for anyone who wants to practice SQL in a fun, space-themed environment. 🌠
+
+## 🚩 Table of Contents
+
+- [🌍 Introduction](#-introduction)
+- [✨ Game Features](#-game-features)
+- [⚙️ Project Setup](#%EF%B8%8F-project-setup)
+- [🎮 How to Play](#-how-to-play)
+- [🛠️ Technologies Used](#%EF%B8%8F-technologies-used)
+- [🤝 Contributing](#-contributing)
+- [📜 License](#-license)
+
+## 🌍 Introduction
+
+In **SQL Galaxy**, you will solve SQL challenges that range from simple queries to complex subqueries. The game is divided into several difficulty levels, inspired by the galaxy:
+
+- 🌌 **Milky Way (Easy)**
+- 🌟 **Hydra Cluster (Intermediate)**
+- 🌠 **Hercules Supercluster (Advanced)**
+
+As you progress through the game, you’ll answer SQL queries based on space-related data such as planets, moons, and space missions. 🚀
+
+## ✨ Game Features
+
+- 🌍 **Multiple Difficulty Levels**: Start from the basics and work your way up to advanced SQL concepts like subqueries, joins, and common table expressions (CTEs).
+- ⏱️ **Real-time Feedback**: Instantly see the results of your SQL queries and know whether your answer is correct.
+- 💡 **Hints and Tips**: Get help with hints for each challenge if you’re stuck.
+- 🛠️ **Practice Mode**: Use a sandbox environment to practice SQL without any limits.
+
+## ⚙️ Project Setup
+
+Follow these steps to run SQL Galaxy on your local machine or deploy it on Heroku.
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- 🐍 Python 3.x
+- 🐘 PostgreSQL
+- 🎨 Streamlit
+- 🚀 Heroku CLI (for deployment)
+
+### Installation Steps
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/your-username/sql-galaxy.git
+   cd sql-galaxy
+
+2. **Create a virtual environment** (optional but recommended):
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+3. **Install the dependencies**:
+
+   ```bash
+   pip install -r requirements.txt
+
+4. **Set up PostgreSQL database**:
+
+   - Create a PostgreSQL database for SQL Galaxy.
+   - Add the required tables (`planets`, `missions`, and `moons`) using the provided SQL script (`init.sql`).
+   - Ensure you have the correct credentials in your `.streamlit/secrets.toml` file.
+
+   Example `secrets.toml`:
+
+   ```toml
+   [postgresql]
+   DB_URL = "postgres://username:password@hostname:port/database"
+
+5. **Run the application**:
+
+   Start the application locally with Streamlit:
+
+   ```bash
+   streamlit run HOME.py
+
+6. **Deploy to Heroku**:
+
+   To deploy to Heroku, follow these steps:
+
+   - **Log in to Heroku** (if you're not already logged in):
+
+     ```bash
+     heroku login
+     ```
+
+   - **Create a new Heroku app**:
+
+     ```bash
+     heroku create
+     ```
+
+   - **Add PostgreSQL to Heroku**:
+
+     ```bash
+     heroku addons:create heroku-postgresql:hobby-dev
+     ```
+
+   - **Push your code to Heroku**:
+
+     ```bash
+     git push heroku main
+     ```
+
+   - **Set environment variables** (optional if using secrets file):
+
+     ```bash
+     heroku config:set DB_URL="postgres://username:password@hostname:port/database"
+     ```
+
+   - **Open your app** in the browser:
+
+     ```bash
+     heroku open
+     ```
+
+
+## 🎮 How to Play
+
+1. **Choose a Difficulty**: Select a difficulty level (Milky Way, Hydra Cluster, or Hercules Supercluster).
+2. **Answer SQL Queries**: Read the question, write your SQL query in the input field, and submit your answer.
+3. **View Results**: Instantly see if your query is correct and view the results from the database.
+4. **Use Hints (Optional)**: Stuck? Open the hint section for guidance.
+
+## 🛠️ Technologies Used
+
+- 🐍 **Python**: Backend logic and query processing.
+- 🐼 **Pandas**: For data manipulation and handling SQL query results.
+- 🎨 **Streamlit**: Interactive web interface for the game.
+- 🐘 **PostgreSQL**: Database for storing the game’s data (planets, moons, and missions).
+- 🔗 **psycopg2**: PostgreSQL adapter for Python.
+- 🖥️ **VS Code**: Integrated development environment (IDE) used for coding.
+- ☁️ **Heroku**: Hosting the web application.
+- 🌐 **GitHub**: Version control and code repository.
+- 🤖 **ChatGPT-4**: Assisted in project development and support.
+
+## 🤝 Contributing
+
+Contributions are welcome! If you have ideas or improvements for SQL Galaxy, feel free to open an issue or submit a pull request.
+
+### How to Contribute
+
+1. **Fork the repository**.
+2. **Create a new branch**: `git checkout -b feature-name`.
+3. **Make your changes** and commit them.
+4. **Push to your fork**: `git push origin feature-name`.
+5. **Submit a pull request**.
