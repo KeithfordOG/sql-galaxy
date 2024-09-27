@@ -71,7 +71,7 @@ with tabs[0]:
 
     Before diving into SQL, let's understand what a **relational database** is.
 
-    Imagine a digital filing system where data is neatly organized into tables, much like spreadsheets. Each table represents a specific topic or entity, such as `planets` or `missions`.
+    Imagine a digital filing system where data is neatly organized into tables, much like spreadsheets. Each table represents a specific topic or entity, such as `PLANETS`,  `MISSIONS` or `MOONS`.
 
     ### Tables, Rows, and Columns
 
@@ -79,7 +79,7 @@ with tabs[0]:
     - **Rows**: Individual records within a table.
     - **Columns**: Specific attributes or fields that describe the data.
 
-    For example, a `planets` table might look like this:
+    For example, a `PLANETS` table might look like this:
 
     | planet_id | planet_name | distance_from_earth | discoverer     |
     |-----------|-------------|---------------------|----------------|
@@ -99,7 +99,7 @@ with tabs[0]:
     A **primary key** is a column (or a combination of columns) that uniquely identifies each record in a table.
 
     - **Purpose**: Ensure that each record can be uniquely identified.
-    - **Example**: In the `planets` table, `planet_id` serves as the primary key, ensuring every planet has a unique identifier.
+    - **Example**: In the `PLANETS` table, `planet_id` serves as the primary key, ensuring every planet has a unique identifier.
 
     **Planets Table Example:**
 
@@ -115,7 +115,7 @@ with tabs[0]:
     A **foreign key** is a column in one table that references the primary key of another table, creating a relationship between the two tables.
 
     - **Purpose**: Link related data across different tables.
-    - **Example**: In a `missions` table, `planet_id` is a foreign key referencing `planet_id` in the `planets` table. This links each mission to the planet it is associated with.
+    - **Example**: In a `MISSIONS` table, `planet_id` is a foreign key referencing `planet_id` in the `PLANETS` table. This links each mission to the planet it is associated with.
     
     **Missions Table Example:**
 
@@ -245,38 +245,42 @@ with tabs[1]:
 
 
     st.subheader("""
-    EXAMPLE 1: 
-    Retrieve all the planet names from the PLANETS table
+    EXAMPLE 1:    
+    Retrieve the `planet_id` & `planet name` from the `PLANETS` table
+ 
     ```sql
-    SELECT planet_name FROM planets;
+    SELECT planet_id, planet_name 
+    FROM planets;
     ```
-    This query will rerieve all the planet names in the `planets` table.
-             
-    **Expected Output**:
-    | planet_name |
-    |-------------|
-    | Venus       |
-    | Mars        |
-    | Jupiter     |
-    | Saturn      |
-    | Neptune     |
-    | Pluto       |
-    | Uranus      |
-    | Mercury     |
-    | Earth       |
+    This query will rerieve the `planet_id` and `planet_names` in the `PLANETS` table.
+
+    **Expected Output:**      
+    | planet_id | planet_name |
+    |-----------|-------------|
+    | 1         | Venus       |
+    | 2         | Mars        |
+    | 3         | Jupiter     |
+    | 4         | Saturn      |
+    | 5         | Neptune     |
+    | 6         | Pluto       |
+    | 7         | Uranus      |
+    | 8         | Mercury     |
+    | 9         | Earth       |
 
     """)
 
     st.write("\n" * 5)
 
     st.write("""
-    ### EXAMPLE 2: 
-    Retrieve all the columns from the PLANETS table
+    ### EXAMPLE 2:   
+    Retrieve all the columns from the `PLANETS` table
+  
     ```sql
-    SELECT * FROM planets;
+    SELECT * 
+    FROM planets;
     """)
     
-    st.write("""This query will retrieve all columns from the `planets` table.
+    st.write("""This query will retrieve all columns from the `PLANETS` table.
     """)
 
     st.write("""
@@ -328,10 +332,12 @@ with tabs[1]:
 
 # Example using WHERE Clause
     st.subheader("EXAMPLE:") 
-    st.write("Retrieve all missions where the crew size is greater than 3")
+    st.write("Retrieve all missions where the `crew_size` is greater than 3")
     st.write("""
     ```sql
-    SELECT * FROM missions WHERE crew_size > 3;
+    SELECT * 
+    FROM missions 
+    WHERE crew_size > 3;
     """)
     st.write("""
     **Expected Output**:
@@ -361,16 +367,18 @@ with tabs[1]:
 
     # Example using LIKE
     st.subheader("EXAMPLE:")
-    st.write("Retrieve all the moons that start with the letter 'T' ")
+    st.write("Retrieve the `moon_name` that start with the letter 'C' ")
     st.write("""
     ```sql
-    SELECT moon_name FROM moons WHERE moon_name LIKE 'T%'
+    SELECT moon_name 
+    FROM moons 
+    WHERE moon_name LIKE 'C%'
     """)
     st.write("""
     | moon_name |
     |-----------|
-    | Titan     |
-    | Triton    |
+    | Callisto  |
+    | Charon    |
 
     """)
 
@@ -390,10 +398,12 @@ with tabs[1]:
 
 
     st.subheader("EXAMPLE 1:")
-    st.write("Find the mission that took place after the year 1999 AND has a crew size greater than 5")
+    st.write("Find the mission that took place after the year 1999 AND has a `crew_size` greater than 5")
     st.write("""
     ```sql
-    SELECT * FROM missions WHERE mission_date > '1999-12-31' AND crew_size > 5;         
+    SELECT * 
+    FROM missions 
+    WHERE mission_date > '1999-12-31' AND crew_size > 5;         
     """)
     st.write("""
     **Expected Output**:
@@ -407,7 +417,9 @@ with tabs[1]:
     st.write("Find all the records for planets discovered after 1700 OR further than 1400 from Earth")
     st.write("""
     ```sql
-    SELECT * FROM planets WHERE discovery_year > 1700 OR distance_from_earth > 1400;
+    SELECT * 
+    FROM planets 
+    WHERE discovery_year > 1700 OR distance_from_earth > 1400;
     """)
 
     st.write("""
@@ -433,15 +445,15 @@ with tabs[1]:
     st.write("Count the number of planets in the PLANETS table")
     st.write("""
     ```sql
-    SELECT COUNT(*) AS total_planets
+    SELECT COUNT(*) 
     FROM planets;
     ```
-    This query counts the total number of rows (planets) in the `planets` table.
+    This query counts the total number of rows (planets) in the `PLANETS` table.
     """)
 
     st.write("""
     **Expected Output**:
-    | total_planets |
+    | count |
     |---------------|
     | 9             |
     """)
