@@ -285,7 +285,7 @@ def main():
 
     # Brief description/intro explaining the five stages and rules
     st.markdown("""
-    ### Welcome to the Hydra Cluster Galaxy!
+    ### Hydra Cluster Galaxy!
     You've navigated through the Milky Way and now approach the Hydra Cluster, a realm of greater challenges. Here, your SQL skills will be tested with more complex queries involving multiple tables and advanced conditions.
 
     **Your mission**:

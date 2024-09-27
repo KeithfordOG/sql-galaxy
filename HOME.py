@@ -61,43 +61,156 @@ tabs = st.tabs(["What is SQL?", "Beginner SQL Tips", "Intermediate SQL Tips (Joi
 with tabs[0]:
     st.header("What is SQL?")
     st.write("""
-    SQL (Structured Query Language) is the standard language used to interact with relational databases, which store data in tables consisting of rows and columns.
+    SQL, or Structured Query Language, is the standard for working with relational databases. These databases store information in tables made up of rows and columns. SQL allows users to access, modify, and manage the data in these tables.
 
-    ### What is a Database?
-    In a database, a **table** is a collection of related data organized in rows and columns. Each table typically represents an entity (such as `Planets` or `Missions`), and the rows represent individual records, while the columns represent different attributes of the data.
-    For example, in a `planets` table, columns might include `planet_id`, `planet_name`, and `distance_from_earth`.
+    **Ever wondered how online stores keep track of thousands of products, or how social media platforms manage millions of user profiles?** That's SQL at work behind the scenes!
 
-    ### Relational Databases
-    A **relational database** organizes data into tables with rows and columns, where each table represents an entity (e.g., `planets`, `missions`). These tables are related to each other through keys.
+    ---
 
-    ### Primary Key
-    A **primary key** is a column (or set of columns) that uniquely identifies each record in a table. For example, `planet_id` in the `planets` table is a primary key, ensuring each planet has a unique identifier.
+    ## Understanding Relational Databases
 
-    ### Foreign Key
-    A **foreign key** is a column in one table that refers to the primary key in another table, establishing a relationship between the two. For instance, the `planet_id` in the `missions` table is a foreign key that references the `planet_id` in the `planets` table, linking missions to specific planets.
+    Before diving into SQL, let's understand what a **relational database** is.
 
-             
-    ### How SQL Works:
-    SQL follows a client-server model. A user sends a query (like `SELECT * FROM planets`) to the database server, which processes the query and returns the requested data. This interaction allows for seamless communication between applications and data storage systems.
-             
-    ### Popular SQL Databases:
-    - **PostgreSQL**: Known for advanced querying capabilities and support for complex operations.
-    - **MySQL**: Popular for web applications, especially with PHP.
-    - **SQL Server**: A Microsoft product used in enterprise environments for high scalability and security.
+    Imagine a digital filing system where data is neatly organized into tables, much like spreadsheets. Each table represents a specific topic or entity, such as `planets` or `missions`.
 
-    ### SQL's Core Role:
-    SQL enables efficient data management, allowing users to store, retrieve, and manipulate large datasets. It powers the backend of modern applications, from e-commerce platforms to social media, and plays a vital role in decision-making and data analytics.
+    ### Tables, Rows, and Columns
 
-    ### Real-World Use Cases:
-    - **E-commerce**: Manage inventory, customer data, and orders.
-    - **Finance**: Track transactions and generate reports for analysis.
-    - **Healthcare**: Store patient records and medical data.
-    - **Business Intelligence**: Query and analyze big data for strategic decisions.
+    - **Tables**: Collections of related data organized in rows and columns.
+    - **Rows**: Individual records within a table.
+    - **Columns**: Specific attributes or fields that describe the data.
 
-    ### A Brief History of SQL:
-    SQL was developed in the 1970s by IBM and became the standard for database management. Today, it's supported by almost every major database system, including PostgreSQL, MySQL, and SQL Server.
+    For example, a `planets` table might look like this:
 
-    SQL has been the foundation of data-driven systems for decades, making it a crucial skill in the data management landscape.
+    | planet_id | planet_name | distance_from_earth | discoverer     |
+    |-----------|-------------|---------------------|----------------|
+    | 1         | Mercury     | 77 million km       | Ancient Greeks |
+    | 2         | Venus       | 38 million km       | Babylonians    |
+    | 3         | Earth       | 0 km                | N/A            |
+    | 4         | Mars        | 55 million km       | Egyptians      |
+
+    ---
+    
+    ## Primary Keys and Foreign Keys
+
+    Understanding how tables relate to each other is crucial in relational databases.
+
+    ### Primary Keys
+
+    A **primary key** is a column (or a combination of columns) that uniquely identifies each record in a table.
+
+    - **Purpose**: Ensure that each record can be uniquely identified.
+    - **Example**: In the `planets` table, `planet_id` serves as the primary key, ensuring every planet has a unique identifier.
+
+    **Planets Table Example:**
+
+    | **planet_id (Primary Key)** | planet_name | distance_from_earth | discoverer     |
+    |-----------------------------|-------------|---------------------|----------------|
+    | 1                           | Mercury     | 77 million km       | Ancient Greeks |
+    | 2                           | Venus       | 38 million km       | Babylonians    |
+    | 3                           | Earth       | 0 km                | N/A            |
+    | 4                           | Mars        | 55 million km       | Egyptians      |
+
+    ### Foreign Keys
+
+    A **foreign key** is a column in one table that references the primary key of another table, creating a relationship between the two tables.
+
+    - **Purpose**: Link related data across different tables.
+    - **Example**: In a `missions` table, `planet_id` is a foreign key referencing `planet_id` in the `planets` table. This links each mission to the planet it is associated with.
+    
+    **Missions Table Example:**
+
+    | **mission_id (PK)** | mission_name    | **planet_id (Foreign Key)** |
+    |------------|-----------------|-----------------------------|
+    | 1          | Apollo 11       | 3                           |
+    | 2          | Viking 1        | 4                           |
+    | 3          | Mariner 10      | 1                           |
+    | 4          | Venus Express   | 2                           |
+
+    
+    ---
+
+    ## Why Use SQL?
+
+    SQL is the language that allows you to interact with relational databases effortlessly.
+
+    - **Retrieve Data**: Ask questions like, "Which planets are closer than 100 million km from Earth?"
+    - **Insert Data**: Add new records to your tables.
+    - **Update Data**: Modify existing information.
+    - **Delete Data**: Remove records that are no longer needed.
+
+    **Example Query:**   "Retrieve all planet names from the planets table"          
+    ```sql
+    SELECT planet_name 
+    FROM planets;         
+    ```
+    **Expected Output:**
+    ## Planet Names
+
+    | planet_name |
+    |-------------|
+    | Venus       |
+    | Mars        |
+    | Jupiter     |
+    | Saturn      |
+    | Neptune     |
+    | Pluto       |
+    | Uranus      |
+    | Mercury     |
+    | Earth       |
+
+                
+    ---
+
+    ## The Core Role of SQL in Real-World Applications
+
+    SQL is essential for efficient data management, powering the backend of modern applications and enabling users to handle large datasets effectively. It plays a vital role in decision-making and data analytics across various industries:
+
+    - **E-commerce**: Managing product catalogs, customer data, and orders.
+    - **Finance**: Tracking transactions and generating analytical reports.
+    - **Healthcare**: Storing patient records and medical histories.
+    - **Social Media**: Handling user profiles, posts, and interactions.
+    - **Education**: Managing student information and academic records.
+    - **Business Intelligence**: Analyzing big data for strategic decisions.
+    - **Transportation**: Managing logistics, tracking shipments, and scheduling.
+    - **Government**: Keeping records for public administration and services.
+
+    By enabling quick and reliable access to data, SQL powers the backend of countless applications you use every day.
+        
+    ---
+    
+    ## Popular SQL Databases
+
+    There are several SQL database systems, each with unique features:
+
+    - **PostgreSQL**: An open-source database known for its advanced features and strict compliance with SQL standards. It's ideal for complex applications requiring robust data integrity and complex queries.
+
+    - **MySQL**: A widely-used open-source database, especially popular in web applications and with languages like PHP. It's known for its speed and reliability in handling large databases.
+
+    - **SQL Server**: A Microsoft product suitable for enterprise environments requiring high scalability and security. It integrates well with other Microsoft services and offers comprehensive tools for data analysis.
+
+    - **Oracle Database**: Designed for large-scale applications, Oracle offers robust performance, extensive features, and strong security. It's commonly used in enterprise environments that require handling massive amounts of data.
+
+    - **SQLite**: A lightweight, file-based database ideal for mobile apps and small projects. It's serverless, requires zero configuration, and is easy to use, making it perfect for embedded systems and applications with low to medium traffic.
+
+    ---
+    ## A Brief History of SQL
+
+    - **1970s**: SQL (Structured Query Language) was developed by IBM researchers Donald D. Chamberlin and Raymond F. Boyce. It was designed to interact with relational databases, based on Edgar F. Codd’s relational model.
+
+    - **1986**: SQL was adopted as a standard by the American National Standards Institute (ANSI), establishing it as the official language for managing and manipulating relational databases.
+
+    - **1987**: The International Organization for Standardization (ISO) also recognized SQL as the standard for database management.
+
+    - **1990s and Beyond**: Over the decades, SQL became the universal language for managing data in relational database management systems (RDBMS). Popular SQL-based databases, like PostgreSQL, MySQL, Oracle, and SQL Server, were developed and widely adopted.
+
+    - **Present Day**: SQL remains a critical tool in data management and is used across virtually every industry. It is supported by all major relational database systems and continues to evolve with new features and optimizations.
+
+    SQL has been the foundation of data-driven systems for decades, and its simplicity, flexibility, and powerful querying capabilities have made it an indispensable skill for data professionals.
+
+    
+    
+
+    
     """)
 
     # Add the "Ready to Begin Your SQL Journey?" prompt only in this tab
